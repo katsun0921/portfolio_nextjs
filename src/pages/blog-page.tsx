@@ -1,13 +1,8 @@
-import type { NextPage } from 'next'
-import React from 'react'
+import type { NextPage } from "next";
+import React from "react";
 
 const blogPage: NextPage = () => {
-    return (
-        <div>
-            Blog Page
-        </div>
-    )
-}
+  return <div>Blog Page</div>;
+};
 
-export default blogPage
-
+export default blogPage;

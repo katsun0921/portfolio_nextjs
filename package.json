@@ -1,13 +1,24 @@
 {
   "name": "portfolio_nextjs",
   "private": true,
+  "engines": {
+    "node": "",
+    "npm": ""
+  },
   "scripts": {
+    "type-check": "tsc --pretty --noEmit",
     "clean": "rm -rf .next",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint --dir src",
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css}'"
+  },
+  "lint-staged": {
+    "*.@(ts|tsx)": [
+      "npm run lint",
+      "npm run format"
+    ]
   },
   "dependencies": {
     "next": "12.0.4",

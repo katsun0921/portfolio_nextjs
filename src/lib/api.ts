@@ -17,11 +17,6 @@ export type TServicesParams = {
   service: TService[]
 }
 
-export interface IServicesParams {
-  name: string;
-  service: TServicesParams;
-}
-
 const uri: string = "http://localhost:8081/apis";
 const apiUrl = new URL(uri).toString();
 
@@ -32,11 +27,13 @@ export async function getAllServices(): Promise<TServicesParams> {
     if (!res.ok) {
       throw new Error(`${res.status} ${res.statusText}`);
     }
+
     return await res.json() as TServicesParams;
   } catch (err) {
     console.error('Error getAllServices: ',err);
     const jsonPath = path.join(process.cwd(), './', 'data', 'all.json')
     const jsonText = fs.readFileSync(jsonPath, 'utf-8')
+
     return JSON.parse(jsonText) as TServicesParams
   }
 }
@@ -60,6 +57,7 @@ export async function getAllServiceName(): Promise<{params: {name: string}}[]> {
     });
   } catch (err) {
     console.error(err)
+
     return []
   }
 }
@@ -80,6 +78,7 @@ export async function getServiceData(name: string): Promise<TServicesParams> {
     };
   } catch (err) {
     console.error(err)
+
     return {
       name,
       service: [] as TService[]

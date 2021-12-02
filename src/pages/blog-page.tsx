@@ -22,6 +22,7 @@ const blogPage: NextPage<{ services: ServiceProps[] }> = ({ services }) => {
       <ul className="m-10">
         {!!services && services.map((service, i) => {
           service.id = i
+
           return <Post key={i} service={service} />
           }
         )}
@@ -34,6 +35,7 @@ export default blogPage;
 
 export const getStaticProps =  async () => {
   const services = await getAllServices()
+
   return {
     props: { services }
   }

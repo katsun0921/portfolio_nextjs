@@ -1,4 +1,6 @@
 import fetch from "node-fetch";
+import * as fs from 'fs'
+import * as path from 'path'
 
 export type TService = {
   id: number
@@ -24,32 +26,60 @@ const uri: string = "http://localhost:8081/apis";
 const apiUrl = new URL(uri).toString();
 
 //TODO: 返り値を設定する
-export async function getAllServices() {
-  const res = await fetch(apiUrl);
-  return await res.json() as TServicesParams;
+export async function getAllServices(): Promise<TServicesParams> {
+  try {
+    const res = await fetch(apiUrl);
+    if (!res.ok) {
+      throw new Error(`${res.status} ${res.statusText}`);
+    }
+    return await res.json() as TServicesParams;
+  } catch (err) {
+    console.error('Error getAllServices: ',err);
+    const jsonPath = path.join(process.cwd(), './', 'data', 'all.json')
+    const jsonText = fs.readFileSync(jsonPath, 'utf-8')
+    return JSON.parse(jsonText) as TServicesParams
+  }
 }
 
 //TODO: 返り値を設定する
-export async function getAllServiceName() {
-  const res = await fetch(apiUrl);
-  const service = await res.json() as TService[];
+export async function getAllServiceName(): Promise<{params: {name: string}}[]> {
+  try {
+    const res = await fetch(apiUrl);
+    if (!res.ok) {
+      throw new Error(`${res.status} ${res.statusText}`);
+    }
 
-  return service.map(item => {
-    return {
-      params: {
-        name: String(item.service),
-      },
-    };
-  });
+    const service = await res.json() as TService[];
+
+    return service.map(item => {
+      return {
+        params: {
+          name: String(item.service),
+        },
+      };
+    });
+  } catch (err) {
+    console.error(err)
+    return []
+  }
 }
 
-export async function getServiceData(name: string): Promise<IServicesParams> {
-  const apiUrl = new URL(`${uri}?service=${name}`).toString();
-  const res = await fetch(apiUrl);
-  const service = await res.json() as TServicesParams;
+export async function getServiceData(name: string): Promise<never[] | IServicesParams> {
+  try {
+    const apiUrl = new URL(`${uri}?service=${name}`).toString();
+    const res = await fetch(apiUrl);
+    if (!res.ok) {
+      throw new Error(`${res.status} ${res.statusText}`);
+    }
 
-  return {
-    name,
-    service,
-  };
+    const service = await res.json() as TServicesParams;
+
+    return {
+      name,
+      service,
+    };
+  } catch (err) {
+    console.error(err)
+    return []
+  }
 }

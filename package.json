@@ -2,8 +2,8 @@
   "name": "portfolio_nextjs",
   "private": true,
   "engines": {
-    "node": "",
-    "npm": ""
+    "node": "16.2.0",
+    "npm": "7.14.0"
   },
   "scripts": {
     "type-check": "tsc --pretty --noEmit",

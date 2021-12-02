@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import Layout from "../components/Layout"
+import Layout from "@components/Layout"
 import React from "react";
 
 const contactPage: NextPage = () => {

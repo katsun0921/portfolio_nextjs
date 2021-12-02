@@ -1,10 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextPage, NextComponentType } from "next";
 import Link from "next/link";
-import Layout from "../../components/Layout";
-import { TService ,TServicesParams, getAllServiceName, getServiceData } from "../../lib/api"
+import Layout from "@components/Layout";
+import { TServicesParams, getAllServiceName, getServiceData } from "@lib/api"
 import { ReactElement } from "react";
-import Post from "../../components/Post";
+import Post from "@components/Post";
 
 type Service = {
   name: string

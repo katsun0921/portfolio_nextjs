@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import Link from "next/link";
-import Layout from "../components/Layout"
-import Post from "../components/Post"
-import { getAllServices } from "../lib/api"
+import Layout from "@components/Layout"
+import Post from "@components/Post"
+import { getAllServices } from "@lib/api"
 
 type ServiceProps = {
   id?: number,

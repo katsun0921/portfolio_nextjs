@@ -1,13 +1,16 @@
-import Head from "next/head"
-import Link from "next/link"
+import Head from "next/head";
+import Link from "next/link";
 import type { NextPage } from "next";
-import type { ReactNode, ReactElement } from 'react'
-interface ILayoutProps  {
-  children: ReactNode,
-  title: string
+import type { ReactNode, ReactElement } from "react";
+interface ILayoutProps {
+  children: ReactNode;
+  title: string;
 }
 
-const Layout: NextPage<ILayoutProps> = ({ children, title = "HP by Layout" }): ReactElement => {
+const Layout: NextPage<ILayoutProps> = ({
+  children,
+  title = "HP by Layout",
+}): ReactElement => {
   return (
     <div className="flex justify-center items-center flex-col min-h-screen text-gray-600 text-sm">
       <Head>
@@ -34,9 +37,11 @@ const Layout: NextPage<ILayoutProps> = ({ children, title = "HP by Layout" }): R
           </div>
         </div>
       </nav>
-      <main className="flex flex-1 justify-center items-center flex-col w-screen">{children}</main>
+      <main className="flex flex-1 justify-center items-center flex-col w-screen">
+        {children}
+      </main>
     </div>
-  )
-}
+  );
+};
 
 export default Layout;

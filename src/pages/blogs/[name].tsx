@@ -1,35 +1,27 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextPage, NextComponentType } from "next";
+import type { ReactElement } from "react";
 import Link from "next/link";
 import Layout from "@components/Layout";
-import { TService,TServicesParams, getAllServiceName, getServiceData } from "@lib/api"
-import { ReactElement } from "react";
+import { TServicesParams, getAllServiceName, getServiceData } from "@lib/api"
 import Post from "@components/Post";
-
-type Service = {
-  name: string
-  service: [Service]
-}
 
 interface IPaths {
   paths: {params: {name: string}}[],
   fallback: Boolean
 }
 
-type TParams = {
+interface IParams  {
   params: {
     name: string
   }
 }
 interface IProps {
-  props: {
-    name: string
-    service: TService[]
-  }
+  props: TServicesParams
 }
 
-export default function Service ({name, service }: TServicesParams): ReactElement {
-  if (!service) {
+export default function BlogName ({name, lists }: TServicesParams): ReactElement {
+  if (!lists) {
     return <div>Loading...</div>
   }
 
@@ -51,7 +43,7 @@ export default function Service ({name, service }: TServicesParams): ReactElemen
         </div>
       </Link>
       <ul className="m-10">
-        {!!service && service.map((article, i) => {
+        {!!lists && lists.map((article, i) => {
             article.id = i
 
             return <Post key={i} service={article} />
@@ -71,13 +63,10 @@ export async function getStaticPaths (): Promise<IPaths> {
   }
 }
 
-export async function getStaticProps({ params } : TParams): Promise<IProps> {
-  const {service, name} = await getServiceData(params.name);
+export async function getStaticProps({ params } : IParams): Promise<IProps> {
+  const service = await getServiceData(params.name);
 
   return {
-    props: {
-      name,
-      service
-    }
+    props: service
   };
 }

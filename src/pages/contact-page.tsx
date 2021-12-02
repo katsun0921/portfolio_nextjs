@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
+import type { ReactElement } from "react";
 import Image from "next/image";
 import Layout from "@components/Layout"
-import React from "react";
 
-const contactPage: NextPage = () => {
+const contactPage: NextPage = (): ReactElement => {
   return (
     <Layout title="Contact">
       <div className="bg-white text-center shadow-xl p-8 w-80 rounded">

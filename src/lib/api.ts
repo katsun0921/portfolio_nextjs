@@ -14,13 +14,12 @@ export type TService = {
 
 export type TServicesParams = {
   name: string
-  service: TService[]
+  lists: TService[]
 }
 
 const uri: string = "http://localhost:8081/apis";
 const apiUrl = new URL(uri).toString();
 
-//TODO: 返り値を設定する
 export async function getAllServices(): Promise<TServicesParams> {
   try {
     const res = await fetch(apiUrl);
@@ -38,7 +37,6 @@ export async function getAllServices(): Promise<TServicesParams> {
   }
 }
 
-//TODO: 返り値を設定する
 export async function getAllServiceName(): Promise<{params: {name: string}}[]> {
   try {
     const res = await fetch(apiUrl);
@@ -74,14 +72,14 @@ export async function getServiceData(name: string): Promise<TServicesParams> {
 
     return {
       name,
-      service,
+      lists: service,
     };
   } catch (err) {
     console.error(err)
 
     return {
       name,
-      service: [] as TService[]
+      lists: [] as TService[]
     }
   }
 }

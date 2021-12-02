@@ -1,13 +1,13 @@
 import Head from "next/head"
 import Link from "next/link"
 import type { NextPage } from "next";
-import type { ReactNode } from 'react'
-type Props = {
-  children?: ReactNode,
-  title?: string
+import type { ReactNode, ReactElement } from 'react'
+interface ILayoutProps  {
+  children: ReactNode,
+  title: string
 }
 
-const Layout: NextPage<Props> = ({ children, title = "HP by Layout" }: Props) => {
+const Layout: NextPage<ILayoutProps> = ({ children, title = "HP by Layout" }): ReactElement => {
   return (
     <div className="flex justify-center items-center flex-col min-h-screen text-gray-600 text-sm">
       <Head>

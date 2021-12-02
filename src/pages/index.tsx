@@ -1,10 +1,11 @@
 import type { NextPage } from "next";
+import type { ReactElement } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "@styles/Home.module.css";
 import Layout from "@components/Layout"
 
-const Home: NextPage = () => {
+const Home: NextPage = (): ReactElement => {
   return (
     <Layout title="Home">
       <p className="text-4xl">Portfolio Site</p>

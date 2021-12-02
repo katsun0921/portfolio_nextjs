@@ -1,15 +1,12 @@
 import type { NextPage } from "next";
+import type { ReactElement } from "react";
 import Link from "next/link";
 import Layout from "@components/Layout"
-import Post from "@components/Post"
-import { getAllServices } from "@lib/api"
+import Post, { IPostProps } from "@components/Post"
+import { TServicesParams, getAllServices } from "@lib/api"
 
-type ServiceProps = {
-  id?: number,
-  service?: object
-}
 
-const blogPage: NextPage<{ services: ServiceProps[] }> = ({ services }) => {
+const BlogPage: NextPage<{ services: IPostProps[] }> = ({ services }): ReactElement => {
   return (
     <Layout title="Blog">
       <ul>
@@ -31,9 +28,9 @@ const blogPage: NextPage<{ services: ServiceProps[] }> = ({ services }) => {
   );
 };
 
-export default blogPage;
+export default BlogPage;
 
-export const getStaticProps =  async () => {
+export const getStaticProps =  async (): Promise<{props: {services: TServicesParams}}> => {
   const services = await getAllServices()
 
   return {

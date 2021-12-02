@@ -1,13 +1,14 @@
 import type { NextPage } from "next";
+import type { ReactElement } from "react";
 import Link from 'next/link'
 
-type Props = {
-  id?: Number
-  text?: String
-  link?: String
+export interface IPostProps {
+  id: Number
+  text: String
+  link: String
 }
 
-const Post: NextPage<{service: Props }> = ({ service }) => {
+const Post: NextPage<{service: IPostProps }> = ({ service }): ReactElement => {
 
   return (
     <li>

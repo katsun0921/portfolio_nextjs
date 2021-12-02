@@ -64,7 +64,7 @@ export async function getAllServiceName(): Promise<{params: {name: string}}[]> {
   }
 }
 
-export async function getServiceData(name: string): Promise<never[] | IServicesParams> {
+export async function getServiceData(name: string): Promise<TServicesParams> {
   try {
     const apiUrl = new URL(`${uri}?service=${name}`).toString();
     const res = await fetch(apiUrl);
@@ -72,7 +72,7 @@ export async function getServiceData(name: string): Promise<never[] | IServicesP
       throw new Error(`${res.status} ${res.statusText}`);
     }
 
-    const service = await res.json() as TServicesParams;
+    const service = await res.json() as TService[];
 
     return {
       name,
@@ -80,6 +80,9 @@ export async function getServiceData(name: string): Promise<never[] | IServicesP
     };
   } catch (err) {
     console.error(err)
-    return []
+    return {
+      name,
+      service: [] as TService[]
+    }
   }
 }

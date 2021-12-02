@@ -2,7 +2,7 @@
 import type { NextPage, NextComponentType } from "next";
 import Link from "next/link";
 import Layout from "@components/Layout";
-import { TServicesParams, getAllServiceName, getServiceData } from "@lib/api"
+import { TService,TServicesParams, getAllServiceName, getServiceData } from "@lib/api"
 import { ReactElement } from "react";
 import Post from "@components/Post";
 
@@ -14,9 +14,9 @@ type Service = {
 interface IPaths {
   paths: {params: {name: string}}[],
   fallback: Boolean
-};
+}
 
-type TProps = {
+type TParams = {
   params: {
     name: string
   }
@@ -24,7 +24,7 @@ type TProps = {
 interface IProps {
   props: {
     name: string
-    service: TServicesParams
+    service: TService[]
   }
 }
 
@@ -32,6 +32,7 @@ export default function Service ({name, service }: TServicesParams): ReactElemen
   if (!service) {
     return <div>Loading...</div>
   }
+
   return (
     <Layout title={name}>
       <Link href="/blog-page" passHref>
@@ -52,6 +53,7 @@ export default function Service ({name, service }: TServicesParams): ReactElemen
       <ul className="m-10">
         {!!service && service.map((article, i) => {
             article.id = i
+
             return <Post key={i} service={article} />
           }
         )}
@@ -62,18 +64,20 @@ export default function Service ({name, service }: TServicesParams): ReactElemen
 
 export async function getStaticPaths (): Promise<IPaths> {
   const paths = await getAllServiceName()
+
   return  {
     paths,
     fallback: false
   }
 }
 
-export async function getStaticProps({ params } : TProps): Promise<IProps> {
+export async function getStaticProps({ params } : TParams): Promise<IProps> {
   const {service, name} = await getServiceData(params.name);
+
   return {
     props: {
       name,
       service
     }
-  }
+  };
 }

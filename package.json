@@ -15,7 +15,7 @@
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css}'"
   },
   "lint-staged": {
-    "*.@(ts|tsx)": [
+    "*.(ts|tsx)": [
       "npm run lint",
       "npm run format"
     ]

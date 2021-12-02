@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import type { ReactElement } from "react";
 import Image from "next/image";
-import Layout from "@components/Layout"
+import Layout from "@components/Layout";
 
 const contactPage: NextPage = (): ReactElement => {
   return (

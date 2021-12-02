@@ -5,7 +5,6 @@ import Layout from "@components/Layout"
 import Post, { IPostProps } from "@components/Post"
 import { TServicesParams, getAllServices } from "@lib/api"
 
-
 const BlogPage: NextPage<{ services: IPostProps[] }> = ({ services }): ReactElement => {
   return (
     <Layout title="Blog">

@@ -1,6 +1,14 @@
 {
   "root": true,
+  "env": {
+    "browser": true,
+    "es6": true
+  },
   "extends": ["next", "next/core-web-vitals", "prettier"],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2020
+  },
   "rules": {
     "import/prefer-default-export": "off",
     "newline-before-return": "error",
@@ -12,6 +20,7 @@
       {
         "SwitchCase": 1
       }
-    ]
+    ],
+    "no-useless-rename": "error"
   }
 }

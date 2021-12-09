@@ -38,7 +38,7 @@ export async function getAllServices(): Promise<TServicesParams> {
 
 export async function getAllServiceName(): Promise<
   { params: { name: string } }[]
-> {
+  > {
   try {
     const res = await fetch(apiUrl);
     if (!res.ok) {

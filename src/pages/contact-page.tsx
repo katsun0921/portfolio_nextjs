@@ -5,7 +5,7 @@ import Layout from "@components/Layout";
 
 const contactPage: NextPage = (): ReactElement => {
   return (
-    <Layout title="Contact">
+    <Layout title="Contact" page="constant">
       <div className="bg-white text-center shadow-xl p-8 w-80 rounded">
         <div className="mt-4">
           <p className="font-bold">Contact Info</p>

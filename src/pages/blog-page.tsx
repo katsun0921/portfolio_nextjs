@@ -9,7 +9,7 @@ const BlogPage: NextPage<{ services: IPostProps[] }> = ({
   services,
 }): ReactElement => {
   return (
-    <Layout title="Blog">
+    <Layout title="Blog" page="blog">
       <ul>
         <li>
           <Link href="/services/twitter">

@@ -29,7 +29,7 @@ export default function BlogName({
   }
 
   return (
-    <Layout title={name}>
+    <Layout title={name} page="blog">
       <Link href="/blog-page" passHref>
         <div className="flex cursor-pointer mt-12">
           <svg

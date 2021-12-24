@@ -1,26 +1,31 @@
 import type { NextPage } from "next";
 import type { ReactElement } from "react";
-import Head from "next/head";
-import Image from "next/image";
 import styles from "@styles/Home.module.css";
 import Layout from "@components/Layout";
+import { pageName, pageTitle } from "@constants/page";
 
 const Home: NextPage = (): ReactElement => {
   return (
-    <Layout title="Home">
-      <p className="text-4xl">Portfolio Site</p>
-      {/* <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="./image/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer> */}
+    <Layout title={pageTitle.home} page={pageName.home}>
+      <main className="mx-auto px-4 w-full">
+        <div className={styles.name__block}>
+          <div className={styles.name__container}>
+            <h1 className="text-white">Katsumasa Sato</h1>
+          </div>
+        </div>
+        <div className="transition-all duration-500">
+          <div className={styles.about__block}>
+            <div className={styles.about__container}>
+              <h2>About</h2>
+            </div>
+          </div>
+          <div className={styles.blog__block}>
+            <div className={styles.blog__container}>
+              <h2>Blog</h2>
+            </div>
+          </div>
+        </div>
+      </main>
     </Layout>
   );
 };

@@ -10,7 +10,8 @@
           "apply",
           "variants",
           "responsive",
-          "screen"
+          "screen",
+          "layer"
         ]
       }
     ],
@@ -263,10 +264,12 @@
       "animation-fill-mode",
       "fill",
       "stroke"
-    ]
+    ],
+    "selector-class-pattern": "^[a-z0-9]+(_[a-z0-9]+)*$"
   },
   "property-no-vendor-prefix": true,
   "rule-empty-line-before": null,
+  "resolveNestedSelectors": true,
   "scss/dollar-variable-default": [true, { "ignore": "local" }],
   "selector-attribute-quotes": "always",
   "selector-list-comma-newline-after": "always",

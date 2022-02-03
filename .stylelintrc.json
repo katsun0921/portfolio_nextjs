@@ -265,7 +265,7 @@
       "fill",
       "stroke"
     ],
-    "selector-class-pattern": "^[a-z0-9]+(_[a-z0-9]+)*$"
+    "selector-class-pattern": "^[a-zA-Z0-9]+(__[a-zA-Z0-9]+)*$"
   },
   "property-no-vendor-prefix": true,
   "rule-empty-line-before": null,

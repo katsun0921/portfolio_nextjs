@@ -8,7 +8,7 @@
   "scripts": {
     "type-check": "tsc --pretty --noEmit",
     "clean": "rm -rf .next",
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint --dir src",
@@ -24,7 +24,7 @@
       "npm run format",
       "npm run lint:es:fix"
     ],
-    "*.*.{css,scss,sass}": [
+    "*.css": [
       "npm run format",
       "npm run lint:style:fix"
     ]
@@ -46,7 +46,7 @@
     "lint-staged": "^12.1.2",
     "postcss": "^8.3.11",
     "prettier": "^2.4.1",
-    "stylelint": "^14.2.0",
+    "stylelint": "^14.3.0",
     "stylelint-config-standard": "^24.0.0",
     "stylelint-order": "^5.0.0",
     "tailwindcss": "^2.2.19",

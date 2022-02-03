@@ -20,7 +20,7 @@ const Layout: NextPage<ILayoutProps> = ({
   const isViewNav = page === pageName.blog;
 
   return (
-    <div className="bg-hero-sp md:bg-hero-pc bg-cover h-screen overflow-hidden fixed w-screen z-0 before:bg-black before:h-screen before:opacity-50 before:fixed before:w-screen">
+    <div className="bg-hero-sp lg:bg-hero-pc bg-cover h-screen overflow-hidden fixed w-screen z-0 before:bg-black before:h-screen before:opacity-50 before:fixed before:w-screen">
       <Head>
         <title>
           {(title = !!title ? title + " | " + defaultTitle : defaultTitle)}

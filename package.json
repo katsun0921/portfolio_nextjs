@@ -1,8 +1,9 @@
 {
   "name": "portfolio_nextjs",
+  "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "14.x",
+    "node": "16.x",
     "npm": "8.x"
   },
   "scripts": {
@@ -14,8 +15,7 @@
     "lint": "next lint --dir src",
     "lint:es:fix": "eslint src --ext .js,jsx,.ts,.tsx --fix",
     "lint-staged": "lint-staged",
-    "lint:style": "stylelint '**/*.{css,scss,sass}'",
-    "lint:style:fix": "stylelint --fix '**/*.{css,scss,sass}'",
+    "lint:style:fix": "stylelint --fix '**/*.css'",
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css}'",
     "prepare": "husky install"
   },
@@ -43,7 +43,7 @@
     "eslint-config-next": "12.0.4",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^7.0.0",
-    "lint-staged": "^12.1.2",
+    "lint-staged": "^12.3.1",
     "postcss": "^8.3.11",
     "prettier": "^2.4.1",
     "stylelint": "^14.3.0",

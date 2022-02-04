@@ -16,7 +16,7 @@
     text-shadow: 0 3px 3px rgb(0 0 0 / 25%);
 
     &::before {
-      @apply block -ml-4;
+      @apply block -ml-4 lg:ml-0;
       font-size: 22px;
     }
   }
@@ -94,14 +94,18 @@
     }
 
     &__text {
-      padding-left: 35px;
-      text-shadow: 0 3px 3px rgb(0 0 0 / 25%);
       @apply relative;
 
       &::before {
+        @apply absolute border-none left-0 mb-4 transform -translate-y-full;
+      }
+
+      &::after {
         width: 130px;
-        border-bottom-width: 1px;
-        @apply absolute left-0 mb-4 border-solid border-white transform -translate-y-full;
+        height: 1px;
+        content: '';
+        box-shadow: 0 3px 3px rgb(0 0 0 / 25%);
+        @apply absolute left-0 mb-4 bg-white;
       }
     }
   }

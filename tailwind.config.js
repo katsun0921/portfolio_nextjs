@@ -16,6 +16,11 @@ module.exports = {
       zIndex: {
         "-999": "-999",
       },
+      colors: {
+        "primary-color": "#F1F3F6",
+        "active-color": "#333",
+        "line-primary-color": "#BFBFBF"
+      }
     },
     screens: {
       sm: "576px",

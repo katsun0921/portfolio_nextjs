@@ -1,0 +1,10 @@
+.primary {
+  font-size: 22px;
+}
+
+.secondary {
+  @apply bg-primary-color;
+  height: 30px;
+  font-size: 18px;
+  line-height: 30px;
+}

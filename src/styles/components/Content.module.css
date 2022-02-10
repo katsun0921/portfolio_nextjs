@@ -1,0 +1,22 @@
+.nav {
+  &Bar {
+    @apply w-screen bg-primary-color flex justify-end items-center;
+    height: 30px;
+  }
+
+  &Text {
+    line-height: 30px;
+  }
+}
+
+.close {
+  &Block {
+    width: 30px;
+    height: 30px;
+  }
+
+  &Line {
+    width: 20px;
+    background-color: #666;
+  }
+}

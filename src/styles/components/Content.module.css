@@ -1,4 +1,4 @@
-.content {
+.wrap {
   --nav-height: 30px;
   --name-width: 365px;
 }
@@ -30,10 +30,20 @@
   width: var(--name-width);
 }
 
+.main {
+  width: 100vw;
+  min-height: 100vh;
+  margin-top: var(--nav-height);
+}
+
 @screen lg {
   .nav {
     &Bar {
       width: calc(100vw - var(--name-width));
     }
+  }
+
+  .main {
+    width: calc(100vw - var(--name-width));
   }
 }

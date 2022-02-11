@@ -1,0 +1,47 @@
+.list {
+  &Wrap {
+    --icon-size: 40px;
+    --icon-distance: var(--icon-size) + 8px;
+  }
+
+  &Block {
+    padding-left: calc(var(--icon-distance));
+
+    &::before {
+      @apply absolute h-full w-px block bg-line-primary-color;
+      left: calc(var(--icon-size) / 2);
+      content: '';
+    }
+  }
+
+  &Heading {
+    &::before {
+      left: calc(-1 * (var(--icon-distance)));
+      width: var(--icon-size);
+      height: var(--icon-size);
+      content: '';
+      border-radius: 50%;
+      @apply block bg-line-primary-color absolute top-1/2 transform -translate-y-1/2;
+    }
+
+    &::after {
+      --icon-img: var(--icon-size) * .7;
+      left: calc(-1 * (var(--icon-distance) - (var(--icon-img) / 4)));
+      width: calc(var(--icon-img));
+      height: calc(var(--icon-img));
+      content: '';
+      background-image: url('/image/building.png');
+      @apply block absolute top-1/2 transform -translate-y-1/2 bg-cover;
+    }
+  }
+
+  &Duration {
+    --line-width: 8px;
+
+    &::after {
+      width: var(--line-width);
+      content: '';
+      @apply relative h-px inline-block bg-gray-400 mx-1 mb-1;
+    }
+  }
+}

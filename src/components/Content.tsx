@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { NextPage } from "next";
 import type { ReactNode, ReactElement } from "react";
-import { Name } from "@components/index";
+import { Name } from "@components/Index";
 import { contentName } from "@constants/content";
 import contentStyles from "@styles/components/content.module.css";
 
@@ -15,7 +15,7 @@ export const Content: NextPage<IContentProps> = ({
   page,
 }): ReactElement => {
   return (
-    <div className={`flex ${contentStyles.content}`}>
+    <div className={`flex ${contentStyles.wrap}`}>
       <div
         className={`hidden lg:block flex-shrink-0 h-screen relative z-0 ${contentStyles.name}`}
       >
@@ -54,7 +54,9 @@ export const Content: NextPage<IContentProps> = ({
             </Link>
           </nav>
         </div>
-        <main className="px-2 py-10 bg-white z-0">{children}</main>
+        <main className={`px-2 py-10 bg-white z-0 ${contentStyles.main}`}>
+          {children}
+        </main>
       </div>
     </div>
   );

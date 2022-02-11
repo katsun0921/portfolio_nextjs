@@ -2,9 +2,12 @@ import type { NextPage } from "next";
 import type { ReactElement } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Layout from "@components/Layout";
-import { HeadingPrimary, HeadingSecondary } from "@components/Heading";
-import Content from "@components/Content";
+import {
+  Layout,
+  HeadingPrimary,
+  HeadingSecondary,
+  Content,
+} from "@components/index";
 import { TServicesParams, getAllServices } from "@lib/api";
 import { contentName } from "@constants/content";
 import profileStyles from "@styles/pages/profile.module.css";
@@ -91,7 +94,7 @@ const ProfilePage: NextPage = (): ReactElement => {
           <dl className="mt-2">
             <dt>HTML/CSS</dt>
             <dd
-              className={`mt-1 w-5/5 text-center text-white drop-shadow ${profileStyles.skillSetListBar} ${profileStyles.html_css}`}
+              className={`mt-1 w-5/5 text-center text-white drop-shadow ${profileStyles.skillSetListBar} ${profileStyles.htmlCss}`}
             >
               5
             </dd>
@@ -99,14 +102,10 @@ const ProfilePage: NextPage = (): ReactElement => {
         </section>
         <section className="mt-6">
           <HeadingPrimary text="Work" level="2" />
-          <ul>
-            <li>
+          <ul className="lg:flex mt-6">
+            <li className="w-full lg:w-1/2 lg:pr-2">
               <Link href="https://katsumascore.blog" passHref>
-                <a
-                  className="block mt-6"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a className="block" target="_blank" rel="noopener noreferrer">
                   <Image
                     className="w-full"
                     src="/image/katsumascore.jpg"
@@ -114,30 +113,28 @@ const ProfilePage: NextPage = (): ReactElement => {
                     width={690}
                     height={460}
                   />
-                  個人で作成した映画レビュー投稿サイトとなります。Wordpress
-                  で作成しています。
+                  <p>
+                    個人で作成した映画レビュー投稿サイトとなります。Wordpress
+                    で作成しています。
+                  </p>
                 </a>
               </Link>
             </li>
-            <li>
-              <Link href="https://youtu.be/vTjW6Iiy9IE" passHref>
-                <a
-                  className="block mt-6"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Image
-                    className="w-full"
-                    src="/image/3dcg.jpg"
-                    alt="KatsumaScore"
-                    width={690}
-                    height={460}
-                  />
-                  大学生に専攻していた3DCGを駆使した3DCGアニメーションになります。3dsMAXでモデルを作成し、After
-                  Effectsを使用し動画を作成しました。
-                  <em className="block">youtubeへリンクします。</em>
-                </a>
-              </Link>
+            <li className="w-full lg:w-1/2 lg:pl-2 mt-6 lg:mt-0">
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/vTjW6Iiy9IE"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+              <p>
+                大学生に専攻していた3DCGを駆使した3DCGアニメーションになります。3dsMAXでモデルを作成し、After
+                Effectsを使用し動画を作成しました。
+                <em className="block">youtubeへリンクします。</em>
+              </p>
               <Link
                 href="https://s3.ks-portfolio.site/public/pdf/portfolio_72dpi.pdf"
                 passHref

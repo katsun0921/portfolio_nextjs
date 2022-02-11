@@ -1,22 +1,39 @@
+.content {
+  --nav-height: 30px;
+  --name-width: 365px;
+}
+
 .nav {
   &Bar {
     @apply w-screen bg-primary-color flex justify-end items-center;
-    height: 30px;
+    height: var(--nav-height);
   }
 
   &Text {
-    line-height: 30px;
+    line-height: var(--nav-height);
   }
 }
 
 .close {
   &Block {
-    width: 30px;
-    height: 30px;
+    width: var(--nav-height);
+    height: var(--nav-height);
   }
 
   &Line {
     width: 20px;
     background-color: #666;
+  }
+}
+
+.name {
+  width: var(--name-width);
+}
+
+@screen lg {
+  .nav {
+    &Bar {
+      width: calc(100vw - var(--name-width));
+    }
   }
 }

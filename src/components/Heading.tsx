@@ -3,10 +3,10 @@ import type { ReactElement } from "react";
 import { createElement } from "react";
 import headingStyles from "@styles/components/heading.module.css";
 
-export interface IHeadingProps {
-  text: String;
-  level: String;
-  icon?: String;
+interface IHeadingProps {
+  text: string;
+  level: string;
+  icon?: string;
 }
 
 export const HeadingPrimary: NextPage<IHeadingProps> = ({

@@ -1,30 +1,36 @@
 {
   "name": "portfolio_nextjs",
+  "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "14.x",
+    "node": "16.x",
     "npm": "8.x"
   },
   "scripts": {
     "type-check": "tsc --pretty --noEmit",
     "clean": "rm -rf .next",
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint --dir src",
-    "lint:fix": "eslint src --ext .js,jsx,.ts,.tsx --fix",
+    "lint:es:fix": "eslint src --ext .js,jsx,.ts,.tsx --fix",
+    "lint-staged": "lint-staged",
+    "lint:style:fix": "stylelint --fix './src/styles/**/*.css'",
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css}'",
-    "prepare": "husky install",
-    "lint-staged": "lint-staged"
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.(ts|tsx)": [
       "npm run format",
-      "npm run lint:fix"
+      "npm run lint:es:fix"
+    ],
+    "*.css": [
+      "npm run format",
+      "npm run lint:style:fix"
     ]
   },
   "dependencies": {
-    "next": "12.0.7",
+    "next": "^12.0.10",
     "node-fetch": "^3.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
@@ -37,9 +43,12 @@
     "eslint-config-next": "12.0.4",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^7.0.0",
-    "lint-staged": "^12.1.2",
+    "lint-staged": "^12.3.1",
     "postcss": "^8.3.11",
     "prettier": "^2.4.1",
+    "stylelint": "^14.3.0",
+    "stylelint-config-standard": "^24.0.0",
+    "stylelint-order": "^5.0.0",
     "tailwindcss": "^2.2.19",
     "typescript": "4.5.2"
   }

@@ -1,0 +1,49 @@
+.wrap {
+  --nav-height: 30px;
+  --name-width: 365px;
+}
+
+.nav {
+  &Bar {
+    @apply w-screen bg-primary-color flex justify-end items-center;
+    height: var(--nav-height);
+  }
+
+  &Text {
+    line-height: var(--nav-height);
+  }
+}
+
+.close {
+  &Block {
+    width: var(--nav-height);
+    height: var(--nav-height);
+  }
+
+  &Line {
+    width: 20px;
+    background-color: #666;
+  }
+}
+
+.name {
+  width: var(--name-width);
+}
+
+.main {
+  width: 100vw;
+  min-height: 100vh;
+  margin-top: var(--nav-height);
+}
+
+@screen lg {
+  .nav {
+    &Bar {
+      width: calc(100vw - var(--name-width));
+    }
+  }
+
+  .main {
+    width: calc(100vw - var(--name-width));
+  }
+}

@@ -2,10 +2,10 @@ import type { NextPage } from "next";
 import type { ReactElement } from "react";
 import Link from "next/link";
 
-export interface IPostProps {
-  id: Number;
-  text: String;
-  link: String;
+interface IPostProps {
+  id: number;
+  text: string;
+  link: string;
 }
 
 const Post: NextPage<{ service: IPostProps }> = ({ service }): ReactElement => {

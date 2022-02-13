@@ -1,0 +1,35 @@
+.skillSetList {
+  &Text {
+    --type-width: .5em;
+    @apply relative;
+    padding-left:
+      calc(
+        var(--type-width) + (.5em * 2)
+      ); /* width + (left + right margins) */
+    &::before {
+      top: calc(1.6em / 2);
+      left: .5em;
+      width: var(--type-width);
+      height: 1px;
+      content: '';
+      @apply absolute bg-black;
+    }
+  }
+
+  &Graph {
+    @apply w-1/5 text-right border-r border-solid border-black relative;
+  }
+
+  &Value {
+    @apply absolute bottom-0 right-1;
+  }
+
+  &Bar {
+    height: 30px;
+    line-height: 30px;
+  }
+}
+
+.htmlCss {
+  background-color: #e0bbe4;
+}

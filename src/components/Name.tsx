@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import type { ReactElement } from "react";
 import { Fragment } from "react";
 import Link from "next/link";
-import nameStyles from "@styles/components/name.module.css";
+import nameStyles from "@styles/components/Name.module.css";
 import { isContent } from "@lib/index";
 
 interface INameProps {

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Layout, HeadingPrimary, Content } from "@components/_Index";
 import { TServicesParams, getAllServices } from "@lib/api";
 import { contentName } from "@constants/content";
-import blogStyles from "@styles/pages/blog.module.css";
+import blogStyles from "@styles/pages/Blog.module.css";
 
 const BlogPage: NextPage = (): ReactElement => {
   const pageType: string = "blog";

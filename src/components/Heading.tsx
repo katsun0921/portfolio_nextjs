@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import type { ReactElement } from "react";
 import { createElement } from "react";
-import headingStyles from "@styles/components/heading.module.css";
+import headingStyles from "@styles/components/Heading.module.css";
 
 interface IHeadingProps {
   text: string;

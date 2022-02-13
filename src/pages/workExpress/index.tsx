@@ -10,7 +10,7 @@ import {
 } from "@components/_Index";
 import { TServicesParams, getAllServices } from "@lib/api";
 import { contentName } from "@constants/content";
-import workExpressStyles from "@styles/pages/workexpress.module.css";
+import workExpressStyles from "@styles/pages/WorkExpress.module.css";
 
 const WorkExpressPage: NextPage = (): ReactElement => {
   return (

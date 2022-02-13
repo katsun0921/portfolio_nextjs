@@ -10,7 +10,7 @@ import {
 } from "@components/_Index";
 import { TServicesParams, getAllServices } from "@lib/api";
 import { contentName } from "@constants/content";
-import profileStyles from "@styles/pages/profile.module.css";
+import profileStyles from "@styles/pages/Profile.module.css";
 
 const ProfilePage: NextPage = (): ReactElement => {
   return (

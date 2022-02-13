@@ -19,7 +19,7 @@ export const Content: NextPage<IContentProps> = ({
       <div
         className={`hidden lg:block flex-shrink-0 h-screen relative z-0 ${contentStyles.name}`}
       >
-        <div className="fixed top-1/2 transform -translate-y-1/2 ml-7">
+        <div className="fixed top-1/2 transform -translate-y-1/2 ml-4">
           <Name page={page} />
         </div>
       </div>
@@ -54,7 +54,9 @@ export const Content: NextPage<IContentProps> = ({
             </Link>
           </nav>
         </div>
-        <main className={`px-2 py-10 bg-white z-0 ${contentStyles.main}`}>
+        <main
+          className={`px-2 lg:px-4 py-10 bg-white z-0 ${contentStyles.main}`}
+        >
           {children}
         </main>
       </div>

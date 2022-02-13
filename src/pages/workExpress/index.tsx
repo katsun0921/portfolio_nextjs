@@ -24,7 +24,7 @@ const WorkExpressPage: NextPage = (): ReactElement => {
         </section>
         <section className={`mt-6 ${workExpressStyles.listWrap}`}>
           <ol
-            className={`border-b border-dashed border-black border-opacity-50 relative ${workExpressStyles.listBlock}`}
+            className={`border-b border-dashed border-black border-opacity-50 relative lg:ml-20 ${workExpressStyles.listBlock}`}
           >
             <li className="pt-6 pb-4">
               <h2
@@ -33,10 +33,10 @@ const WorkExpressPage: NextPage = (): ReactElement => {
                 株式会社ネクスト
                 <span className="font-normal text-xs text-gray-400">1年間</span>
                 <span
-                  className={`mt-1 font-normal block text-xs text-gray-400`}
+                  className={`mt-1 font-normal block text-xs text-gray-400 ${workExpressStyles.listDurationContainer}`}
                 >
                   <span
-                    className={`relative ${workExpressStyles.listDuration}`}
+                    className={`relative lg:pb-2 ${workExpressStyles.listDuration}`}
                   >
                     2020年2月
                   </span>

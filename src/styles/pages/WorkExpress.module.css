@@ -45,3 +45,23 @@
     }
   }
 }
+
+@screen lg {
+  .list {
+    &DurationContainer {
+      @apply absolute transform -translate-x-full translate-y-1/4 flex flex-col justify-end text-right;
+      top: calc(-1 * var(--icon-size) / 2);
+      left: calc(-1 * (var(--icon-distance) + 4px));
+    }
+
+    &Duration {
+      --decoration-margin: 8px;
+      padding-bottom: var(--decoration-margin);
+
+      &::after {
+        @apply block absolute right-0 m-0;
+        bottom: calc(var(--decoration-margin) / 2);
+      }
+    }
+  }
+}

@@ -37,7 +37,7 @@ const Home: NextPage = (): ReactElement => {
             </Link>
           </li>
           <li className={`${homeStyles.content__list}`}>
-            <Link href="/work-express">
+            <Link href="/workExpress">
               <a
                 className={`${homeStyles.block} ${homeStyles.content__block} ${homeStyles.workExpress__block}`}
               >

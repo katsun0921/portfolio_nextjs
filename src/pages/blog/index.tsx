@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import type { ReactElement } from "react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Layout, HeadingPrimary, Content } from "@components/Index";
+import { Layout, HeadingPrimary, Content } from "@components/_Index";
 import { TServicesParams, getAllServices } from "@lib/api";
 import { contentName } from "@constants/content";
 import blogStyles from "@styles/pages/blog.module.css";

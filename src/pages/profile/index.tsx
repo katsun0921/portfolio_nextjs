@@ -7,7 +7,7 @@ import {
   HeadingPrimary,
   HeadingSecondary,
   Content,
-} from "@components/Index";
+} from "@components/_Index";
 import { TServicesParams, getAllServices } from "@lib/api";
 import { contentName } from "@constants/content";
 import profileStyles from "@styles/pages/profile.module.css";

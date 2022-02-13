@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Link from "next/link";
 import type { ReactElement } from "react";
 import homeStyles from "@styles/pages/home.module.css";
-import { Layout, Name } from "@components/Index";
+import { Layout, Name } from "@components/_Index";
 import { pageName, pageTitle } from "@constants/page";
 
 const Home: NextPage = (): ReactElement => {

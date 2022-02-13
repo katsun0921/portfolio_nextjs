@@ -1,0 +1,47 @@
+.button {
+  --button-height: 30px;
+  @apply bg-primary-color;
+
+  width: 120px;
+  height: var(--button-height);
+  line-height: var(--button-height);
+  border-radius: calc(var(--button-height) / 2);
+
+  &Active {
+    color: #fff;
+    background-color: #333;
+  }
+}
+
+.article {
+  &Block {
+    box-shadow: 3px 3px 5px rgb(0 0 0 / 25%);
+  }
+
+  &Heading {
+    font-size: 22px;
+  }
+
+  &Readmore {
+    @apply bg-primary-color;
+    width: 160px;
+    height: 45px;
+    line-height: 45px;
+  }
+}
+
+.twitter {
+  @apply bg-twitter-color;
+}
+
+.zenn {
+  @apply bg-zenn-color;
+}
+
+@screen lg {
+  .article {
+    &Block {
+      width: 348px;
+    }
+  }
+}

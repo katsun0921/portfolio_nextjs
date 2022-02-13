@@ -20,6 +20,8 @@ module.exports = {
         "primary-color": "#F1F3F6",
         "active-color": "#333",
         "line-primary-color": "#BFBFBF",
+        "twitter-color": "#1DA1F2",
+        "zenn-color": "#3E94FF",
       },
     },
     screens: {

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { NextPage } from "next";
 import type { ReactNode, ReactElement } from "react";
+//import { Name } from "@components/Index";
 import { Name } from "@components/Index";
 import { contentName } from "@constants/content";
 import contentStyles from "@styles/components/content.module.css";

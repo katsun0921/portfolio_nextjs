@@ -29,8 +29,8 @@
 .name {
   &__linkList {
     &::before {
-      margin-bottom: .3em;
-      content: '';
+      margin-bottom: 0.3em;
+      content: "";
       @apply w-2 h-px bg-white inline-block mr-2;
     }
   }
@@ -45,7 +45,7 @@
 
   &__text {
     &::before {
-      content: '01';
+      content: "01";
     }
   }
 }
@@ -59,7 +59,7 @@
 
   &__text {
     &::before {
-      content: '02';
+      content: "02";
     }
   }
 }
@@ -72,7 +72,7 @@
 
   &__text {
     &::before {
-      content: '03';
+      content: "03";
     }
   }
 }
@@ -103,7 +103,7 @@
       &::after {
         width: 130px;
         height: 1px;
-        content: '';
+        content: "";
         box-shadow: 0 3px 3px rgb(0 0 0 / 25%);
         @apply absolute left-0 mb-4 bg-white;
       }

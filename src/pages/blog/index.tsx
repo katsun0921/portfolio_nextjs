@@ -3,7 +3,7 @@ import type { ReactElement } from "react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Layout, HeadingPrimary, Content } from "@components/_Index";
-import { TServicesParams, getAllServices } from "@lib/api";
+import { TServicesParams, getAllServices } from "@lib/apis/blog";
 import { contentName } from "@constants/content";
 import blogStyles from "@styles/pages/Blog.module.css";
 

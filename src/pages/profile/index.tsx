@@ -8,7 +8,7 @@ import {
   HeadingSecondary,
   Content,
 } from "@components/_Index";
-import { TServicesParams, getAllServices } from "@lib/api";
+import { TServicesParams, getAllServices } from "@lib/apis/blog";
 import { contentName } from "@constants/content";
 import profileStyles from "@styles/pages/Profile.module.css";
 

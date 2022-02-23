@@ -29,9 +29,9 @@ export const HeadingSecondary: NextPage<IHeadingProps> = ({
 }): ReactElement => {
   const img = !!icon
     ? createElement("img", {
-      className: "inline-block pr-1",
-      src: `/image/svg/${icon}.svg`,
-    })
+        className: "inline-block pr-1",
+        src: `/image/svg/${icon}.svg`,
+      })
     : null;
 
   return createElement(

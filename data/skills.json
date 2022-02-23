@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "job": "フロントエンド",
+    "skills": [{ "name": "javascript", "level": "5" }]
+  },
+  {
+    "id": "2",
+    "job": "バックエンド",
+    "skills": [{ "name": "golang", "level": "3" }]
+  },
+  {
+    "id": "1",
+    "job": "フロントエンド",
+    "skills": [{ "name": "html / css", "level": "5" }]
+  },
+  {
+    "id": "2",
+    "job": "バックエンド",
+    "skills": [{ "name": "php", "level": "5" }]
+  },
+  {
+    "id": "1",
+    "job": "フロントエンド",
+    "skills": [{ "name": "jQuery", "level": "5" }]
+  },
+  {
+    "id": "3",
+    "job": "インフラ",
+    "skills": [{ "name": "aws", "level": "3" }]
+  }
+]

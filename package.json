@@ -21,12 +21,12 @@
   },
   "lint-staged": {
     "*.(ts|tsx)": [
-      "npm run format",
-      "npm run lint:es:fix"
+      "npm run lint:es:fix",
+      "npm run format"
     ],
     "*.css": [
-      "npm run format",
-      "npm run lint:style:fix"
+      "npm run lint:style:fix",
+      "npm run format"
     ]
   },
   "dependencies": {
@@ -41,12 +41,13 @@
     "autoprefixer": "^10.4.0",
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.4",
-    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-prettier": "^8.4.0",
     "husky": "^7.0.0",
     "lint-staged": "^12.3.1",
     "postcss": "^8.3.11",
     "prettier": "^2.4.1",
     "stylelint": "^14.3.0",
+    "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^24.0.0",
     "stylelint-order": "^5.0.0",
     "tailwindcss": "^2.2.19",

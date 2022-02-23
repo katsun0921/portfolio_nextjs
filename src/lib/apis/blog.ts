@@ -29,7 +29,7 @@ export async function getAllServices(): Promise<TServicesParams> {
     return (await res.json()) as TServicesParams;
   } catch (err) {
     console.error("Error getAllServices: ", err);
-    const jsonPath = path.join(process.cwd(), "./", "data", "all.json");
+    const jsonPath = path.join(process.cwd(), "./", "data", "blog.json");
     const jsonText = fs.readFileSync(jsonPath, "utf-8");
 
     return JSON.parse(jsonText) as TServicesParams;
@@ -38,7 +38,7 @@ export async function getAllServices(): Promise<TServicesParams> {
 
 export async function getAllServiceName(): Promise<
   { params: { name: string } }[]
-  > {
+> {
   try {
     const res = await fetch(apiUrl);
     if (!res.ok) {

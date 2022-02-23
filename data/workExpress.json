@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "company": "株式会社サイバーエージェント",
+    "project": "アーティストサイト",
+    "job_type": "frontend",
+    "start_date": "2020/02/01",
+    "end_date": "2022/02/23",
+    "description": "不動産情報サイトを扱っている某大手企業で、コーディング業務\nPCサイト、SPサイトデザイン、テスト仕様書の作成。\nPHPフレームワーク Symfonyを使用してUIデザインレイアウト。",
+    "skills": ["php", "jQuery", "aws"]
+  },
+  {
+    "id": "2",
+    "company": "株式会社ネクスト",
+    "project": "不動産サイト",
+    "job_type": "frontend",
+    "start_date": "2019/02/01",
+    "end_date": "2020/01/31",
+    "description": "不動産情報サイトを扱っている某大手企業で、コーディング業務\nPCサイト、SPサイトデザイン、テスト仕様書の作成。\nPHPフレームワーク Symfonyを使用してUIデザインレイアウト。",
+    "skills": ["javascript", "golang"]
+  }
+]

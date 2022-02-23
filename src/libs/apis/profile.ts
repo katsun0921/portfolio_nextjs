@@ -16,16 +16,18 @@ export type TWorkExpress = {
   skills: [string];
 };
 
-export async function getWorkExpressData(): Promise<[TWorkExpress]> {
+const apiDomain = new URL(uri.prod).toString();
+
+export async function getProfileData(): Promise<[TWorkExpress]> {
   try {
-    const res = await fetch(`${uri.prod}workexpress`);
+    const res = await fetch(apiDomain);
     if (!res.ok) {
       throw new Error(`${res.status} ${res.statusText}`);
     }
 
     return (await res.json()) as [TWorkExpress];
   } catch (err) {
-    console.error("Error getWorkExpress: ", err);
+    console.error("Error getProfile: ", err);
     const jsonPath = path.join(process.cwd(), "./", "data", "workExpress.json");
     const jsonText = fs.readFileSync(jsonPath, "utf-8");
 

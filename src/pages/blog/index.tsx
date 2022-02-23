@@ -1,11 +1,13 @@
-import type { NextPage } from "next";
-import type { ReactElement } from "react";
-import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+
 import { Layout, HeadingPrimary, Content } from "@components/_Index";
-import { TServicesParams, getAllServices } from "@lib/apis/blog";
 import { contentName } from "@constants/content";
 import blogStyles from "@styles/pages/Blog.module.css";
+import { TServicesParams, getAllServices } from "src/libs/apis/blog";
+
+import type { NextPage } from "next";
+import type { ReactElement } from "react";
 
 const BlogPage: NextPage = (): ReactElement => {
   const pageType: string = "blog";

@@ -1,7 +1,9 @@
 import Head from "next/head";
+
+import { contentName } from "@constants/content";
+
 import type { NextPage } from "next";
 import type { ReactNode, ReactElement } from "react";
-import { contentName } from "@constants/content";
 
 interface ILayoutProps {
   children: ReactNode;

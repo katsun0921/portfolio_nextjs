@@ -1,16 +1,10 @@
+import { Layout, HeadingPrimary, Content } from "@components/_Index";
+import { contentName } from "@constants/content";
+import { TWorkExpress, getWorkExpressData } from "@libs/apis/workExpress";
+import workExpressStyles from "@styles/pages/WorkExpress.module.css";
+
 import type { NextPage } from "next";
 import type { ReactElement } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import {
-  Layout,
-  HeadingPrimary,
-  HeadingSecondary,
-  Content,
-} from "@components/_Index";
-import { TWorkExpress, getWorkExpressData } from "@lib/apis/workExpress";
-import { contentName } from "@constants/content";
-import workExpressStyles from "@styles/pages/WorkExpress.module.css";
 
 const WorkExpressPage: NextPage<{ posts: [TWorkExpress] }> = ({
   posts,

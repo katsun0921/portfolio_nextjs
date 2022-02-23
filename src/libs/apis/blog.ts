@@ -1,6 +1,7 @@
-import fetch from "node-fetch";
 import * as fs from "fs";
 import * as path from "path";
+
+import fetch from "node-fetch";
 
 export type TService = {
   id: number;

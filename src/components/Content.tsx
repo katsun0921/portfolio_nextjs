@@ -1,9 +1,11 @@
 import Link from "next/link";
-import type { NextPage } from "next";
-import type { ReactNode, ReactElement } from "react";
+
 import { Name } from "@components/_Index";
 import { contentName } from "@constants/content";
 import contentStyles from "@styles/components/Content.module.css";
+
+import type { NextPage } from "next";
+import type { ReactNode, ReactElement } from "react";
 
 interface IContentProps {
   children: ReactNode;

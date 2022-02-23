@@ -21,6 +21,24 @@
         "SwitchCase": 1
       }
     ],
-    "no-useless-rename": "error"
+    "no-useless-rename": "error",
+    "import/order": [
+  "error",
+  {
+    "groups": ["builtin", "external", "internal", ["parent", "sibling"], "object", "type", "index"],
+    "newlines-between": "always",
+    "pathGroupsExcludedImportTypes": ["builtin"],
+    "alphabetize": { "order": "asc", "caseInsensitive": true },
+    "pathGroups": [
+      // ここに書いた順序で間に1行空行をあけつつ整頓される
+      { "pattern": "@/libs/**", "group": "internal", "position": "before" },
+      { "pattern": "@/components/ui/**", "group": "internal", "position": "before" },
+
+      // styles
+      // 最後尾にしたいのでgroupをindex扱いにする
+      { "pattern": "./**.module.css", "group": "index", "position": "before" }
+    ]
+  }
+]
   }
 }

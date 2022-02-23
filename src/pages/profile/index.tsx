@@ -1,16 +1,18 @@
-import type { NextPage } from "next";
-import type { ReactElement } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+
 import {
   Layout,
   HeadingPrimary,
   HeadingSecondary,
   Content,
 } from "@components/_Index";
-import { TServicesParams, getAllServices } from "@lib/apis/blog";
 import { contentName } from "@constants/content";
 import profileStyles from "@styles/pages/Profile.module.css";
+import { TServicesParams, getAllServices } from "src/libs/apis/blog";
+
+import type { NextPage } from "next";
+import type { ReactElement } from "react";
 
 const ProfilePage: NextPage = (): ReactElement => {
   return (

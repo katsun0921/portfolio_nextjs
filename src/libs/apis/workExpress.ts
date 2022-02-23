@@ -1,6 +1,8 @@
-import fetch from "node-fetch";
 import * as fs from "fs";
 import * as path from "path";
+
+import fetch from "node-fetch";
+
 import { uri } from "@constants/domain";
 
 export type TWorkExpress = {

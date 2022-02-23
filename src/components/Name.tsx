@@ -1,9 +1,11 @@
+import Link from "next/link";
+import { Fragment } from "react";
+
+import nameStyles from "@styles/components/Name.module.css";
+import { isContent } from "src/libs/index";
+
 import type { NextPage } from "next";
 import type { ReactElement } from "react";
-import { Fragment } from "react";
-import Link from "next/link";
-import nameStyles from "@styles/components/Name.module.css";
-import { isContent } from "@lib/index";
 
 interface INameProps {
   page: string;

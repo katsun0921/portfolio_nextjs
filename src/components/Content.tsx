@@ -28,15 +28,15 @@ export const Content: NextPage<IContentProps> = ({
       <div className="z-10">
         <div className="fixed z-10 right-0">
           <nav className={contentStyles.navBar}>
-            {Object.keys(contentName).map((key, index) => {
+            {Object.keys(contentName).map((key, i) => {
               return (
-                <Link key={index} href={`/${key}`}>
+                <Link key={i} href={`/${key}`}>
                   <a
                     className={
                       (page === key
-                        ? "text-white bg-active-color"
-                        : "text-black hover:bg-active-color hover:text-white") +
-                      ` px-3 h-full ${contentStyles.navText}`
+                        ? `text-white bg-active-color px-3 ${contentStyles.navTextCurrent}`
+                        : `text-black hover:bg-active-color hover:text-white ${contentStyles.navTextOther}`) +
+                      ` h-full ${contentStyles.navText}`
                     }
                   >
                     {contentName[key].nav}
@@ -45,7 +45,7 @@ export const Content: NextPage<IContentProps> = ({
               );
             })}
             <Link href="/">
-              <a className={`relative ${contentStyles.closeBlock}`}>
+              <a className={`relative mr-3 ${contentStyles.closeBlock}`}>
                 <div
                   className={`transform rotate-45 -translate-x-1/2 h-px absolute inset-1/2 ${contentStyles.closeLine}`}
                 ></div>

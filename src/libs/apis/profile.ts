@@ -5,32 +5,30 @@ import fetch from "node-fetch";
 
 import { uri } from "@constants/domain";
 
-export type TWorkExpress = {
+export type TSkills = {
   id: string;
-  company: string;
-  project: string;
-  job_type: string;
-  start_date: string;
-  end_date: string;
-  description: string;
-  skills: [string];
+  job: string;
+  skills: [
+    {
+      language: string;
+      level: string;
+    },
+  ];
 };
 
-const apiDomain = new URL(uri.prod).toString();
-
-export async function getProfileData(): Promise<[TWorkExpress]> {
+export async function getSkillsData(): Promise<[TSkills]> {
   try {
-    const res = await fetch(apiDomain);
+    const res = await fetch(`${uri.prod}skills`);
     if (!res.ok) {
       throw new Error(`${res.status} ${res.statusText}`);
     }
 
-    return (await res.json()) as [TWorkExpress];
+    return (await res.json()) as [TSkills];
   } catch (err) {
-    console.error("Error getProfile: ", err);
-    const jsonPath = path.join(process.cwd(), "./", "data", "workExpress.json");
+    console.error("Error getSkills: ", err);
+    const jsonPath = path.join(process.cwd(), "./", "data", "skills.json");
     const jsonText = fs.readFileSync(jsonPath, "utf-8");
 
-    return JSON.parse(jsonText) as [TWorkExpress];
+    return JSON.parse(jsonText) as [TSkills];
   }
 }

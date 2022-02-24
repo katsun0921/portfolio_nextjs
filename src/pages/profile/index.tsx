@@ -8,13 +8,15 @@ import {
   Content,
 } from "@components/_Index";
 import { contentName } from "@constants/content";
+import { TSkills, getSkillsData } from "@libs/apis/profile";
 import profileStyles from "@styles/pages/Profile.module.css";
-import { TServicesParams, getAllServices } from "src/libs/apis/blog";
 
 import type { NextPage } from "next";
 import type { ReactElement } from "react";
 
-const ProfilePage: NextPage = (): ReactElement => {
+const ProfilePage: NextPage<{ skills: [TSkills] }> = ({
+  skills,
+}): ReactElement => {
   return (
     <Layout title="Profile" page="profile">
       <Content page="profile">
@@ -75,35 +77,48 @@ const ProfilePage: NextPage = (): ReactElement => {
               </ul>
             </dd>
           </dl>
-          <HeadingSecondary text="Front End" level="3" icon="frontend" />
-          <ol className="flex border-b border-solid border-black h-3 mt-6">
-            <li className={`${profileStyles.skillSetListGraph} border-l`}>
-              <span className={profileStyles.skillSetListValue}>1</span>
-            </li>
-            <li className={profileStyles.skillSetListGraph}>
-              <span className={profileStyles.skillSetListValue}>2</span>
-            </li>
-            <li className={profileStyles.skillSetListGraph}>
-              <span className={profileStyles.skillSetListValue}>3</span>
-            </li>
-            <li className={profileStyles.skillSetListGraph}>
-              <span className={profileStyles.skillSetListValue}>4</span>
-            </li>
-            <li className={profileStyles.skillSetListGraph}>
-              <span className={profileStyles.skillSetListValue}>5</span>
-            </li>
-          </ol>
-          <dl className="mt-2">
-            <dt>HTML/CSS</dt>
-            <dd
-              className={`mt-1 w-5/5 text-center text-white drop-shadow ${profileStyles.skillSetListBar} ${profileStyles.htmlCss}`}
-            >
-              5
-            </dd>
-          </dl>
+          {skills.map((skill: TSkills) => {
+            const maxLevel = 5;
+            const skillLists = [];
+            for (let i = 1; i <= maxLevel; i++) {
+              skillLists.push(
+                <li
+                  key={i}
+                  className={`${profileStyles.skillSetListGraph} border-l`}
+                >
+                  <span className={profileStyles.skillSetListValue}>{i}</span>
+                </li>,
+              );
+            }
+
+            return (
+              <div key={skill.id} className="mb-6">
+                <HeadingSecondary text={skill.job} level="3" icon="frontend" />
+                <ol className="flex border-b border-solid border-black h-3 mt-6">
+                  {skillLists}
+                </ol>
+                {skill.skills.map((programming, i) => {
+                  const { level } = programming;
+                  const widthValue = (Number(level) / maxLevel) * 100;
+
+                  return (
+                    <dl key={i} className="mt-2">
+                      <dt>{programming.language}</dt>
+                      <dd
+                        className={`mt-1 w-5/5 text-center text-white drop-shadow ${profileStyles.skillSetListBar} ${profileStyles.htmlCss}`}
+                        style={{ width: `${widthValue}%` }}
+                      >
+                        {programming.level}
+                      </dd>
+                    </dl>
+                  );
+                })}
+              </div>
+            );
+          })}
         </section>
-        <section className="mt-6">
-          <HeadingPrimary text="Work" level="2" />
+        <section>
+          <HeadingPrimary text="Works" level="2" />
           <ul className="lg:flex mt-6">
             <li className="w-full lg:w-1/2 lg:pr-2">
               <Link href="https://katsumascore.blog" passHref>
@@ -163,11 +178,11 @@ const ProfilePage: NextPage = (): ReactElement => {
 export default ProfilePage;
 
 export const getStaticProps = async (): Promise<{
-  props: { services: TServicesParams };
+  props: { skills: [TSkills] };
 }> => {
-  const services = await getAllServices();
+  const skills = await getSkillsData();
 
   return {
-    props: { services },
+    props: { skills },
   };
 };

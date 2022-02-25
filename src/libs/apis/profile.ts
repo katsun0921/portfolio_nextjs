@@ -7,11 +7,14 @@ import { uri } from "@constants/domain";
 
 export type TSkills = {
   id: string;
-  job: string;
-  skills: [
+  name: string;
+  name_jp: string;
+  programming: [
     {
+      language_id: string;
       language: string;
       level: string;
+      color_code: string;
     },
   ];
 };

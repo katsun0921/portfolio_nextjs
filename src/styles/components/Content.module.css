@@ -16,7 +16,7 @@
   }
 }
 
-.navTextCurrent + a {
+.navTextCurrent + .navText {
   @apply ml-3;
 }
 
@@ -38,16 +38,14 @@
   }
 }
 
-.close {
-  &Block {
-    width: var(--nav-height);
-    height: var(--nav-height);
-  }
+.closeBlock {
+  width: var(--nav-height);
+  height: var(--nav-height);
+}
 
-  &Line {
-    width: 20px;
-    background-color: #666;
-  }
+.closeLine {
+  width: 20px;
+  background-color: #666;
 }
 
 .name {

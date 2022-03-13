@@ -1,5 +1,6 @@
 import fetch from "node-fetch";
 
+import { uri } from "@constants/domain";
 import testBlogData from "@data/blogs.json";
 
 export type TBlog = {
@@ -20,12 +21,11 @@ export interface IBlog {
   date_unix: number;
 }
 
-const uri: string = "http://localhost:8081/apis";
-const apiUrl = new URL(uri).toString();
-
 export async function getBlogsData(service = ""): Promise<TBlog[]> {
   try {
-    const res = await fetch(apiUrl);
+    const query = !!service ? service : "all";
+
+    const res = await fetch(`${uri.prod}blog?service=${query}`);
     if (!res.ok) {
       throw new Error(`${res.status} ${res.statusText}`);
     }

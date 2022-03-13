@@ -15,11 +15,7 @@ const Post: NextPage<{ service: IPostProps }> = ({ service }): ReactElement => {
       <span>{service.id}</span>
       {": "}
       <Link href={`${service.link}`}>
-        <a
-          className="cursor-pointer text-blue-500 border-b border-blue-500 hover:bg-gray-200"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a className="cursor-pointer text-blue-500 border-b border-blue-500 hover:bg-gray-200" target="_blank" rel="noopener noreferrer">
           {service.text}
         </a>
       </Link>

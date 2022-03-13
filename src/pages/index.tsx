@@ -11,7 +11,7 @@ const Home: NextPage = (): ReactElement => {
   return (
     <Layout title={pageTitle.home} page={pageName.home}>
       <main>
-        <div className={`${homeStyles.name__block} ${homeStyles.block} w-11/12 mt-11 lg:m-0 lg:top-1/2 lg:left-1/2`}>
+        <div className={`${homeStyles.name__block} ${homeStyles.block} w-11/12 pt-11 pl-4 lg:pl-0 lg:m-0 lg:top-1/2 lg:left-1/2`}>
           <div className={`${homeStyles.container} ${homeStyles.name__container}`}>
             <Name page={pageName.home} />
           </div>

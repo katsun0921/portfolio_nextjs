@@ -17,9 +17,16 @@ export const Layout: NextPage<ILayoutProps> = ({ children, title, page }): React
   const classOverflow = isContent ? "lg:overflow-scroll" : "lg:overflow-hidden";
 
   return (
-    <div className={`bg-hero-sp lg:bg-hero-pc bg-cover lg:h-screen lg:overflow-hidden lg:fixed w-screen z-0 before:bg-black before:h-screen before:opacity-50 before:fixed before:w-screen ${classOverflow}`}>
+    <div className={`bg-hero-sp lg:bg-hero-pc bg-cover h-screen lg:overflow-hidden lg:fixed w-screen z-0 before:bg-black before:h-screen before:opacity-50 before:fixed before:w-screen ${classOverflow}`}>
       <Head>
         <title>{(title = !!title ? title + " | " + defaultTitle : defaultTitle)}</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon_package/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon_package/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon_package/favicon-16x16.png" />
+        <link rel="manifest" href="/favicon_package/site.webmanifest" />
+        <link rel="mask-icon" href="/favicon_package/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
       </Head>
       {children}
     </div>

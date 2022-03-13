@@ -22,12 +22,12 @@ export const HeadingPrimary: NextPage<IHeadingProps> = ({ text, level }): ReactE
 };
 
 export const HeadingSecondary: NextPage<IHeadingProps> = ({ text, level, icon }): ReactElement => {
-  const img = !!icon
-    ? createElement("img", {
-        className: "inline-block pr-1",
-        src: `/image/svg/${icon}.svg`,
-      })
-    : null;
+  const imgParams = {
+    className: "inline-block pr-1",
+    src: `/image/svg/${icon}.svg`,
+  };
+
+  const img = !!icon ? createElement("img", imgParams) : null;
 
   return createElement(`h${level}`, { className: `w-full font-bold pl-2 ${headingStyles.secondary}` }, img, text);
 };

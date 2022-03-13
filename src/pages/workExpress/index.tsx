@@ -1,6 +1,6 @@
 import { Layout, HeadingPrimary, Content } from "@components/_Index";
 import { contentName } from "@constants/content";
-import { TWorkExpress, getWorkExpressData } from "@libs/apis/workExpress";
+import { TWorkExpress, getWorkExpressData } from "@pages/api/workExpress";
 import workExpressStyles from "@styles/pages/WorkExpress.module.css";
 
 import type { NextPage } from "next";

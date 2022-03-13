@@ -39,6 +39,7 @@
     "@types/node": "16.11.9",
     "@types/react": "17.0.36",
     "autoprefixer": "^10.4.0",
+    "cors": "^2.8.5",
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.4",
     "eslint-config-prettier": "^8.4.0",
@@ -50,6 +51,7 @@
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^24.0.0",
     "stylelint-order": "^5.0.0",
+    "swr": "^1.2.2",
     "tailwindcss": "^2.2.19",
     "typescript": "4.5.2"
   }

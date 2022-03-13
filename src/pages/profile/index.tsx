@@ -8,7 +8,7 @@ import {
   Content,
 } from "@components/_Index";
 import { contentName } from "@constants/content";
-import { TSkills, getSkillsData } from "@libs/apis/profile";
+import { TSkills, getSkillsData } from "@pages/api/profile";
 import profileStyles from "@styles/pages/Profile.module.css";
 
 import type { NextPage } from "next";

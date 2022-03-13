@@ -2,9 +2,7 @@
   &Text {
     --type-width: 0.5em;
     @apply relative;
-    padding-left: calc(
-      var(--type-width) + (0.5em * 2)
-    ); /* width + (left + right margins) */
+    padding-left: calc(var(--type-width) + (0.5em * 2)); /* width + (left + right margins) */
     &::before {
       top: calc(1.6em / 2);
       left: 0.5em;

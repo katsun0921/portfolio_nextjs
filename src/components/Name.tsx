@@ -31,9 +31,7 @@ export const Name: NextPage<INameProps> = (props: INameProps): ReactElement => {
     <div className="text-white">
       <h1 className={`${nameStyles.text} drop-shadow text-4xl`}>
         {fullName(props)}
-        <span className={`${nameStyles.textSub} block text-2xl`}>
-          WEB DEVELOPER
-        </span>
+        <span className={`${nameStyles.textSub} block text-2xl`}>WEB DEVELOPER</span>
       </h1>
       <ul className="mt-1 lg:mt-5">
         <li className={`${nameStyles.linkList}`}>

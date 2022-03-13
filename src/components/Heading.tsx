@@ -11,10 +11,7 @@ interface IHeadingProps {
   icon?: string;
 }
 
-export const HeadingPrimary: NextPage<IHeadingProps> = ({
-  text,
-  level,
-}): ReactElement => {
+export const HeadingPrimary: NextPage<IHeadingProps> = ({ text, level }): ReactElement => {
   return createElement(
     `h${level}`,
     {
@@ -24,11 +21,7 @@ export const HeadingPrimary: NextPage<IHeadingProps> = ({
   );
 };
 
-export const HeadingSecondary: NextPage<IHeadingProps> = ({
-  text,
-  level,
-  icon,
-}): ReactElement => {
+export const HeadingSecondary: NextPage<IHeadingProps> = ({ text, level, icon }): ReactElement => {
   const img = !!icon
     ? createElement("img", {
         className: "inline-block pr-1",
@@ -36,10 +29,5 @@ export const HeadingSecondary: NextPage<IHeadingProps> = ({
       })
     : null;
 
-  return createElement(
-    `h${level}`,
-    { className: `w-full font-bold pl-2 ${headingStyles.secondary}` },
-    img,
-    text,
-  );
+  return createElement(`h${level}`, { className: `w-full font-bold pl-2 ${headingStyles.secondary}` }, img, text);
 };

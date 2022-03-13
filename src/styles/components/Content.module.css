@@ -3,27 +3,49 @@
   --name-width: 365px;
 }
 
-.nav {
-  &Bar {
-    @apply w-screen bg-primary-color flex justify-end items-center;
-    height: var(--nav-height);
-  }
+.navBar {
+  @apply w-screen bg-primary-color flex justify-end items-center;
+  height: var(--nav-height);
+}
 
-  &Text {
-    line-height: var(--nav-height);
+.navText {
+  line-height: var(--nav-height);
+
+  &:hover {
+    @apply px-3;
   }
 }
 
-.close {
-  &Block {
-    width: var(--nav-height);
-    height: var(--nav-height);
-  }
+.navTextCurrent + .navText {
+  @apply ml-3;
+}
 
-  &Line {
-    width: 20px;
-    background-color: #666;
+.navTextOther {
+  &:not(:last-of-type) {
+    @apply mr-3;
+
+    &:hover {
+      @apply mr-0 ml-0;
+
+      + .navText {
+        @apply ml-3;
+      }
+
+      + .navText.navTextCurrent {
+        @apply ml-0;
+      }
+    }
   }
+}
+
+.closeBlock {
+  width: var(--nav-height);
+  height: var(--nav-height);
+}
+
+.closeLine {
+  width: 20px;
+  background-color: #666;
 }
 
 .name {
@@ -37,10 +59,8 @@
 }
 
 @screen lg {
-  .nav {
-    &Bar {
-      width: calc(100vw - var(--name-width));
-    }
+  .navBar {
+    width: calc(100vw - var(--name-width));
   }
 
   .main {

@@ -1,18 +1,56 @@
-import type { NextPage } from "next";
-import type { ReactElement } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+
 import {
   Layout,
   HeadingPrimary,
   HeadingSecondary,
   Content,
 } from "@components/_Index";
-import { TServicesParams, getAllServices } from "@lib/api";
 import { contentName } from "@constants/content";
+import { TSkills, getSkillsData } from "@pages/api/profile";
 import profileStyles from "@styles/pages/Profile.module.css";
 
-const ProfilePage: NextPage = (): ReactElement => {
+import type { NextPage } from "next";
+import type { ReactElement } from "react";
+
+const ProfilePage: NextPage<{ skills: [TSkills] }> = ({
+  skills,
+}): ReactElement => {
+  const maxLevel = 5;
+  let skillSetList = [];
+  for (let i = maxLevel; i >= 1; i--) {
+    let skillSetTextValue = "";
+    switch (i) {
+      case 1:
+        skillSetTextValue = "Beginner: 文法を勉強中test";
+        break;
+      case 2:
+        skillSetTextValue = "Novice: 個人開発で簡単なアプリ開発ができる";
+        break;
+      case 3:
+        skillSetTextValue = "Intermediate: 業務経験が1年以上ある";
+        break;
+      case 4:
+        skillSetTextValue = "Advanced: 上流工程の仕事も担当できる";
+        break;
+      case 5:
+        skillSetTextValue = "Elite:リーダーとして開発できる";
+        break;
+      default:
+        break;
+    }
+
+    skillSetList.push(
+      <li key={i} className="flex">
+        {i}
+        <div className={profileStyles.skillSetListText}>
+          {skillSetTextValue}
+        </div>
+      </li>,
+    );
+  }
+
   return (
     <Layout title="Profile" page="profile">
       <Content page="profile">
@@ -39,69 +77,57 @@ const ProfilePage: NextPage = (): ReactElement => {
               プログラミングのレベル別に、どの程度の習熟度なのかまとめました。
             </dt>
             <dd>
-              <ul>
-                <li className="flex">
-                  5
-                  <div className={profileStyles.skillSetListText}>
-                    Elite:リーダーとして開発できる
-                  </div>
-                </li>
-                <li className="flex">
-                  4
-                  <div className={profileStyles.skillSetListText}>
-                    Advanced: 上流工程の仕事も担当できる
-                  </div>
-                </li>
-                <li className="flex">
-                  3
-                  <div className={profileStyles.skillSetListText}>
-                    Intermediate: 業務経験が1年以上ある
-                  </div>
-                </li>
-                <li className="flex">
-                  2
-                  <div className={profileStyles.skillSetListText}>
-                    Novice: 個人開発で簡単なアプリ開発ができる
-                  </div>
-                </li>
-                <li className="flex">
-                  1
-                  <div className={profileStyles.skillSetListText}>
-                    Beginner: 文法を勉強中
-                  </div>
-                </li>
-              </ul>
+              <ul>{skillSetList}</ul>
             </dd>
           </dl>
-          <HeadingSecondary text="Front End" level="3" icon="frontend" />
-          <ol className="flex border-b border-solid border-black h-3 mt-6">
-            <li className={`${profileStyles.skillSetListGraph} border-l`}>
-              <span className={profileStyles.skillSetListValue}>1</span>
-            </li>
-            <li className={profileStyles.skillSetListGraph}>
-              <span className={profileStyles.skillSetListValue}>2</span>
-            </li>
-            <li className={profileStyles.skillSetListGraph}>
-              <span className={profileStyles.skillSetListValue}>3</span>
-            </li>
-            <li className={profileStyles.skillSetListGraph}>
-              <span className={profileStyles.skillSetListValue}>4</span>
-            </li>
-            <li className={profileStyles.skillSetListGraph}>
-              <span className={profileStyles.skillSetListValue}>5</span>
-            </li>
-          </ol>
-          <dl className="mt-2">
-            <dt>HTML/CSS</dt>
-            <dd
-              className={`mt-1 w-5/5 text-center text-white drop-shadow ${profileStyles.skillSetListBar} ${profileStyles.htmlCss}`}
-            >
-              5
-            </dd>
-          </dl>
+          {skills.map((skill: TSkills) => {
+            const skillLists = [];
+            for (let i = 1; i <= maxLevel; i++) {
+              skillLists.push(
+                <li
+                  key={i}
+                  className={`${profileStyles.skillSetListGraph} border-l`}
+                >
+                  <span className={profileStyles.skillSetListValue}>{i}</span>
+                </li>,
+              );
+            }
+
+            return (
+              <div key={skill.id} className="mb-6">
+                <HeadingSecondary
+                  text={skill.name_jp}
+                  level="3"
+                  icon={skill.name}
+                />
+                <ol className="flex border-b border-solid border-black h-3 mt-6">
+                  {skillLists}
+                </ol>
+                {skill.programming.map((item, i) => {
+                  const { language, level, color_code } = item;
+                  const widthValue = (Number(level) / maxLevel) * 100;
+
+                  return (
+                    <dl key={i} className="mt-2">
+                      <dt>{language}</dt>
+                      <dd
+                        className={`mt-1 w-5/5 text-center text-white drop-shadow ${profileStyles.skillSetListBar}}`}
+                        style={{
+                          width: `${widthValue}%`,
+                          backgroundColor: color_code,
+                        }}
+                      >
+                        {level}
+                      </dd>
+                    </dl>
+                  );
+                })}
+              </div>
+            );
+          })}
         </section>
-        <section className="mt-6">
-          <HeadingPrimary text="Work" level="2" />
+        <section>
+          <HeadingPrimary text="Works" level="2" />
           <ul className="lg:flex mt-6">
             <li className="w-full lg:w-1/2 lg:pr-2">
               <Link href="https://katsumascore.blog" passHref>
@@ -161,11 +187,11 @@ const ProfilePage: NextPage = (): ReactElement => {
 export default ProfilePage;
 
 export const getStaticProps = async (): Promise<{
-  props: { services: TServicesParams };
+  props: { skills: [TSkills] };
 }> => {
-  const services = await getAllServices();
+  const skills = await getSkillsData();
 
   return {
-    props: { services },
+    props: { skills },
   };
 };

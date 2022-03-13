@@ -9,8 +9,8 @@
 
 .linkList {
   &::before {
-    margin-bottom: .3em;
-    content: '';
+    margin-bottom: 0.3em;
+    content: "";
     @apply w-2 h-px bg-white inline-block mr-2;
   }
 }

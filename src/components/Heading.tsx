@@ -1,7 +1,9 @@
+import { createElement } from "react";
+
+import headingStyles from "@styles/components/Heading.module.css";
+
 import type { NextPage } from "next";
 import type { ReactElement } from "react";
-import { createElement } from "react";
-import headingStyles from "@styles/components/Heading.module.css";
 
 interface IHeadingProps {
   text: string;
@@ -29,9 +31,9 @@ export const HeadingSecondary: NextPage<IHeadingProps> = ({
 }): ReactElement => {
   const img = !!icon
     ? createElement("img", {
-      className: "inline-block pr-1",
-      src: `/image/svg/${icon}.svg`,
-    })
+        className: "inline-block pr-1",
+        src: `/image/svg/${icon}.svg`,
+      })
     : null;
 
   return createElement(

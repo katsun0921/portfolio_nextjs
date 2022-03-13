@@ -1,6 +1,7 @@
+import Link from "next/link";
+
 import type { NextPage } from "next";
 import type { ReactElement } from "react";
-import Link from "next/link";
 
 interface IPostProps {
   id: number;

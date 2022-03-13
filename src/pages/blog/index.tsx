@@ -1,24 +1,78 @@
-import type { NextPage } from "next";
-import type { ReactElement } from "react";
-import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import useSWR, { SWRResponse } from "swr";
+
 import { Layout, HeadingPrimary, Content } from "@components/_Index";
-import { TServicesParams, getAllServices } from "@lib/api";
 import { contentName } from "@constants/content";
+import { uri } from "@constants/domain";
+import testBlogData from "@data/blogs.json";
+import { TBlog, getBlogsData } from "@pages/api/blog";
 import blogStyles from "@styles/pages/Blog.module.css";
+import { omittedText } from "@utils/index";
 
-const BlogPage: NextPage = (): ReactElement => {
+import type { NextPage, GetStaticProps } from "next";
+import type { ReactElement } from "react";
+
+const apiBlogDomain = `${uri.prod}blogs`;
+
+const fetcher = async (
+  url: string,
+  query: { [service: string]: string },
+): Promise<TBlog[]> => {
+  if (!!query) {
+    url += "?";
+
+    for (const key of Object.keys(query)) {
+      url += `${key}=${query[key]}&`;
+    }
+  }
+
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      throw new Error(`Reason ${res.status} ${res.statusText}`);
+    }
+
+    return (await res.json()) as TBlog[];
+  } catch (err) {
+    console.error("Error feather: ", err);
+
+    return testBlogData as TBlog[];
+  }
+};
+
+const useBlogDataSWR = (fallbackData: TBlog[]): SWRResponse<any, any> => {
+  return useSWR(apiBlogDomain, fetcher, { fallbackData });
+};
+
+const BlogPage: NextPage<{ fallbackData: TBlog[] }> = ({
+  fallbackData,
+}): ReactElement => {
   const pageType: string = "blog";
-  const [state, setState] = useState({ type: "all" });
-  const handleChangeBlogType = (event: React.MouseEvent<HTMLElement>) => {
-    event.preventDefault();
 
-    if (event !== null && event.target instanceof HTMLElement) {
-      const element = event.target;
+  const { data, mutate } = useBlogDataSWR(fallbackData);
+  const [state, setState] = useState({ type: "all" });
+
+  const handleChangeBlogType = async (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+
+    if (e !== null && e.target instanceof HTMLElement) {
+      const element = e.target;
+      const dataType = !!element.dataset.type ? element.dataset.type : "";
       setState((prevState) => ({
         ...prevState,
-        type: !!element.dataset.type ? element.dataset.type : "all",
+        type: !!dataType ? dataType : "all",
       }));
+
+      const query = {
+        service: dataType,
+      };
+
+      const newData = await fetcher(apiBlogDomain, query);
+      // データを更新（mutate）
+      mutate(newData).catch((error) => {
+        throw error;
+      });
     }
   };
 
@@ -73,74 +127,42 @@ const BlogPage: NextPage = (): ReactElement => {
             </li>
           </ul>
           <ul className="lg:flex lg:flex-wrap lg:gap-8 lg:justify-center">
-            <li
-              className={`w-full px-4 pt-4 pb-6 mt-4  ${blogStyles.articleBlock}`}
-            >
-              <h2 className={`mb-5 ${blogStyles.articleHeading}`}>
-                <span
-                  className={`block text-center mx-auto leading-6 rounded-xl w-24 h-6 text-white text-base ${blogStyles.twitter}`}
-                >
-                  twitter
-                </span>
-                <span className="block text-center font-bold mt-2 mx-auto">
-                  Blog Title
-                </span>
-                <span className="block text-center text-base">yyyy/mm/dd</span>
-                <span
-                  className={`block mt-2 mx-auto w-24 h-px ${blogStyles.twitter}`}
-                ></span>
-              </h2>
-              <p className="px-4 mb-5">
-                blog テキストblog テキストblog テキストblog テキストblog
-                テキストblog テキストblog テキストblog テキストblog テキストblog
-                テキストblog テキストblog テキストblog テキストblog テキストblog
-                テキストblog テキストblog テキストblog テキストblog テキストblog
-                テキストblog テキスト
-              </p>
-              <Link href="/" passHref>
-                <a
-                  className={`block text-center mx-auto rounded ${blogStyles.articleReadmore}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  READ MORE
-                </a>
-              </Link>
-            </li>
-            <li
-              className={`w-full px-4 pt-4 pb-6 mt-4 ${blogStyles.articleBlock}`}
-            >
-              <h2 className={`mb-5 ${blogStyles.articleHeading}`}>
-                <span
-                  className={`block text-center mx-auto leading-6 rounded-xl w-24 h-6 text-white text-base ${blogStyles.zenn}`}
-                >
-                  zenn
-                </span>
-                <span className="block text-center font-bold mt-2 mx-auto">
-                  Blog Title
-                </span>
-                <span className="block text-center text-base">yyyy/mm/dd</span>
-                <span
-                  className={`block mt-2 mx-auto w-24 h-px ${blogStyles.zenn}`}
-                ></span>
-              </h2>
-              <p className="px-4 mb-5">
-                blog テキストblog テキストblog テキストblog テキストblog
-                テキストblog テキストblog テキストblog テキストblog テキストblog
-                テキストblog テキストblog テキストblog テキストblog テキストblog
-                テキストblog テキストblog テキストblog テキストblog テキストblog
-                テキストblog テキスト
-              </p>
-              <Link href="/" passHref>
-                <a
-                  className={`block text-center mx-auto rounded ${blogStyles.articleReadmore}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  READ MORE
-                </a>
-              </Link>
-            </li>
+            {!!data ? (
+              data.map((blog, i) => {
+                return (
+                  <li
+                    key={i}
+                    className={`w-full px-4 pt-4 pb-6 mt-4  ${blogStyles.articleBlock}`}
+                  >
+                    <h2 className={`mb-5 ${blogStyles.articleHeading}`}>
+                      <span
+                        className={`block text-center mx-auto leading-6 rounded-xl w-24 h-6 text-white text-base ${blogStyles.twitter}`}
+                      >
+                        {blog.service}
+                      </span>
+                      <span className="block text-center text-base">
+                        {blog.date_created}
+                      </span>
+                      <span
+                        className={`block mt-2 mx-auto w-24 h-px ${blogStyles.twitter}`}
+                      ></span>
+                    </h2>
+                    <p className="px-4 mb-5">{omittedText(blog.text, 100)}</p>
+                    <Link href={blog.link} passHref>
+                      <a
+                        className={`block text-center mx-auto rounded ${blogStyles.articleReadmore}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        READ MORE
+                      </a>
+                    </Link>
+                  </li>
+                );
+              })
+            ) : (
+              <p>Loading...</p>
+            )}
           </ul>
         </section>
       </Content>
@@ -150,12 +172,12 @@ const BlogPage: NextPage = (): ReactElement => {
 
 export default BlogPage;
 
-export const getStaticProps = async (): Promise<{
-  props: { services: TServicesParams };
+export const getStaticProps: GetStaticProps = async (): Promise<{
+  props: { fallbackData: TBlog[] };
 }> => {
-  const services = await getAllServices();
+  const blogData = await fetcher(apiBlogDomain, { service: "zenn" });
 
   return {
-    props: { services },
+    props: { fallbackData: blogData },
   };
 };

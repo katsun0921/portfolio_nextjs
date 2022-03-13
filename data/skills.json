@@ -1,0 +1,24 @@
+[
+  {
+    "id": "1",
+    "job": "フロントエンド",
+    "skills": [
+      { "language": "javascript", "level": "5" },
+      { "language": "html / css", "level": "5" },
+      { "language": "jQuery", "level": "5" }
+    ]
+  },
+  {
+    "id": "2",
+    "job": "バックエンド",
+    "skills": [
+      { "language": "golang", "level": "3" },
+      { "language": "php", "level": "5" }
+    ]
+  },
+  {
+    "id": "3",
+    "job": "インフラ",
+    "skills": [{ "language": "aws", "level": "3" }]
+  }
+]

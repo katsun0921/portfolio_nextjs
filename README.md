@@ -1,6 +1,6 @@
 # My Portfolio Site with NextJs
 
-This is a [My Portfolio Site](www.ks-portfolio.info/).
+This is a [My Portfolio Site](https://www.ks-portfolio.info/).
 
 ## Design
 

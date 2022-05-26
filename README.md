@@ -1,6 +1,6 @@
 # My Portfolio Site with NextJs
 
-This is a [My Portfolio Site](https://portfolio-nextjs-jpu7p1jfd-katsun0921.vercel.app/).
+This is a [My Portfolio Site](www.ks-portfolio.info/).
 
 ## Design
 
